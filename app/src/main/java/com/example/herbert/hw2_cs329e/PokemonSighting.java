@@ -24,7 +24,7 @@ public class PokemonSighting extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pokemon_sighting);
 
         // this will call the constructor of the DatabaseHelper class which will create the DB
         myDb = new DatabaseHelper(this);
@@ -35,7 +35,7 @@ public class PokemonSighting extends AppCompatActivity {
         editTime = (EditText)findViewById(R.id.editTextTime);
         editLocation = (EditText)findViewById(R.id.editTextLocation);
         editNotes = (EditText)findViewById(R.id.editTextNotes);
-        //editTextId = (EditText)findViewById(R.id.editTextID);
+        editTextId = (EditText)findViewById(R.id.editTextID);
         buttonAddData = (Button)findViewById(R.id.buttonData);
         buttonViewAll = (Button)findViewById(R.id.buttonAll);
         updateButton = (Button)findViewById(R.id.buttonUpdate);
@@ -96,10 +96,12 @@ public class PokemonSighting extends AppCompatActivity {
                             buffer.append("Id :" + res.getString(0) + "\n");
                             buffer.append("Name :" + res.getString(1) + "\n");
                             buffer.append("Date :" + res.getString(2) + "\n");
-                            buffer.append("Notes :" + res.getString(3) + "\n");
+                            buffer.append("Time :" + res.getString(3) + "\n");
+                            buffer.append("Location :" + res.getString(4) + "\n");
+                            buffer.append("Notes :" + res.getString(5) + "\n");
                         }
                         // call the method to show all data on the GUI
-                        showMessage("Data",buffer.toString());
+                        showMessage("Pokemon Sightings Log",buffer.toString());
                     }
                 });
     }
