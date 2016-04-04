@@ -1,7 +1,9 @@
 package com.example.herbert.hw2_cs329e;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -64,9 +66,31 @@ public class PokemonSighting extends AppCompatActivity {
         buttonAddData.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
+                        Uri uri;
+                        Intent i;
                         boolean isInserted = myDb.insertData(editName.getSelectedItem().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
                         if (isInserted == true)
                             Toast.makeText(PokemonSighting.this, "Data Inserted", Toast.LENGTH_LONG).show();
+                            if (editName.getSelectedItem().toString().equals("Pikachu")){
+                                uri = Uri.parse("http://pokemondb.net/pokedex/pikachu");
+                                i = new Intent(Intent.ACTION_VIEW,uri);
+                                startActivity(i);
+                            }
+                            else if (editName.getSelectedItem().toString().equals("Charmander")){
+                                uri = Uri.parse("http://pokemondb.net/pokedex/charmander");
+                                i = new Intent(Intent.ACTION_VIEW,uri);
+                                startActivity(i);
+                            }
+                            else if (editName.getSelectedItem().toString().equals("Squirtle")){
+                                uri = Uri.parse("http://pokemondb.net/pokedex/squirtle");
+                                i = new Intent(Intent.ACTION_VIEW,uri);
+                                startActivity(i);
+                            }
+                            else if (editName.getSelectedItem().toString().equals("Bulbasaur")){
+                                uri = Uri.parse("http://pokemondb.net/pokedex/bulbasaur");
+                                i = new Intent(Intent.ACTION_VIEW,uri);
+                                startActivity(i);
+                            }
                         else
                             Toast.makeText(PokemonSighting.this, "Data NOT Inserted", Toast.LENGTH_LONG).show();
                     }
