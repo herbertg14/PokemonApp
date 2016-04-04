@@ -15,7 +15,7 @@ public class PokemonSighting extends AppCompatActivity {
     DatabaseHelper myDb;
 
     // declare the variables needed to manipulate the widgets
-    EditText editName, editSurname, editMarks, editTextId;
+    EditText editName, editNotes, editDate, editTextId, editTime, editLocation;
     Button buttonAddData;
     Button buttonViewAll;
     Button updateButton;
@@ -30,10 +30,12 @@ public class PokemonSighting extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
 
         // this section gets all the GUI widget ID's for use in the Listeners
-        editName = (EditText)findViewById(R.id.editTextID);
-        editSurname = (EditText)findViewById(R.id.editTextDate);
-        editMarks = (EditText)findViewById(R.id.editTextTime);
-        editTextId = (EditText)findViewById(R.id.editTextID);
+        editName = (EditText)findViewById(R.id.editTextName);
+        editDate = (EditText)findViewById(R.id.editTextDate);
+        editTime = (EditText)findViewById(R.id.editTextTime);
+        editLocation = (EditText)findViewById(R.id.editTextLocation);
+        editNotes = (EditText)findViewById(R.id.editTextNotes);
+        //editTextId = (EditText)findViewById(R.id.editTextID);
         buttonAddData = (Button)findViewById(R.id.buttonData);
         buttonViewAll = (Button)findViewById(R.id.buttonAll);
         updateButton = (Button)findViewById(R.id.buttonUpdate);
@@ -52,7 +54,7 @@ public class PokemonSighting extends AppCompatActivity {
         buttonAddData.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(editName.getText().toString(), editSurname.getText().toString(), editMarks.getText().toString());
+                        boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
                         if (isInserted == true)
                             Toast.makeText(PokemonSighting.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
@@ -107,7 +109,7 @@ public class PokemonSighting extends AppCompatActivity {
         updateButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        boolean isUpdated = myDb.updateData(editTextId.getText().toString(), editName.getText().toString(), editSurname.getText().toString(), editMarks.getText().toString());
+                        boolean isUpdated = myDb.updateData(editTextId.getText().toString(), editName.getText().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
                         if (isUpdated == true)
                             Toast.makeText(PokemonSighting.this, "Data Updated", Toast.LENGTH_LONG).show();
                         else

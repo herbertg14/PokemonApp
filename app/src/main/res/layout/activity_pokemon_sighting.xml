@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editTextID"
+        android:id="@+id/editTextName"
         android:layout_alignTop="@+id/textViewID"
         android:layout_alignParentEnd="true" />
 
@@ -76,7 +76,7 @@
         android:ems="10"
         android:id="@+id/editTextDate"
         android:layout_alignTop="@+id/textViewDate"
-        android:layout_alignStart="@+id/editTextID" />
+        android:layout_alignStart="@+id/editTextName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -93,8 +93,7 @@
         android:id="@+id/editTextNotes"
         android:layout_alignTop="@+id/textViewNotes"
         android:layout_alignStart="@+id/editTextDate"
-        android:layout_alignEnd="@+id/editTextTime"
-        android:text="None" />
+        android:layout_alignEnd="@+id/editTextTime" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -110,8 +109,8 @@
         android:layout_height="wrap_content"
         android:text="Add Data"
         android:id="@+id/buttonData"
-        android:layout_marginTop="33dp"
-        android:layout_below="@+id/editTextNotes"
+        android:layout_marginBottom="32dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <Button

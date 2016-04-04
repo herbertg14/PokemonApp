@@ -21,8 +21,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_1 = "ID";
     public static final String COL_2 = "NAME";
     public static final String COL_3 = "DATE";
-    public static final String COL_4 = "NOTES";
-    //public static final String COL_5 = "MARKS";
+    public static final String COL_4 = "TIME";
+    public static final String COL_5 = "LOCATION";
+    public static final String COL_6 = "NOTES";
+
 
     // this is referencing the java class that will manage the SQL DB
     public DatabaseHelper(Context context) {
@@ -35,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         // this is the execute sql query method that takes a string sql query and executes this query
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, DATE TEXT, NOTES TEXT)");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, DATE TEXT, TIME TEXT, LOCATION TEXT, NOTES TEXT)");
 
     }
 
@@ -48,7 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertData(String name, String date, String notes) {
+    public boolean insertData(String name, String date, String time, String location, String notes) {
 
         // Open the database for reading and writing
         SQLiteDatabase db = this.getWritableDatabase();
@@ -59,7 +61,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // you need to specify the column and the data for that column
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,date);
-        contentValues.put(COL_4, notes);
+        contentValues.put(COL_4,time);
+        contentValues.put(COL_5,location);
+        contentValues.put(COL_6,notes);
 
         // need to give this the table name and the content values
         long result = db.insert(TABLE_NAME,null,contentValues);
@@ -82,13 +86,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public boolean updateData(String Id, String name, String date, String notes){
+    public boolean updateData(String Id, String name, String date, String time, String location, String notes){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,Id);
         contentValues.put(COL_2,name);
         contentValues.put(COL_3,date);
-        contentValues.put(COL_4, notes);
+        contentValues.put(COL_4,time);
+        contentValues.put(COL_5,location);
+        contentValues.put(COL_6,notes);
         db.update(TABLE_NAME, contentValues, "id = ?", new String[] {Id});
         return true;
     }
