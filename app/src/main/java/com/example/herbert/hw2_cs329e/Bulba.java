@@ -1,0 +1,25 @@
+package com.example.herbert.hw2_cs329e;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+
+public class Bulba extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_bulba);
+    }
+
+
+    public void onButtonClick(View v) {
+
+        if (v.getId() == R.id.button)
+        {
+            Intent i = new Intent(Bulba.this, PokemonOptions.class);
+            startActivity(i);
+        }
+    }
+}
