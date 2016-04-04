@@ -16,4 +16,11 @@
     </string>
     <string name="testing_back">TestingBack</string>
 
+    <string-array name="pokemon">
+        <item>Pikachu</item>
+        <item>Charmander</item>
+        <item>Squirtle</item>
+        <item>Bulbasaur</item>
+    </string-array>
+
 </resources>

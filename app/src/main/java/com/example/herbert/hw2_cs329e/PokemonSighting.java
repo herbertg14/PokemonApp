@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class PokemonSighting extends AppCompatActivity {
@@ -15,11 +17,13 @@ public class PokemonSighting extends AppCompatActivity {
     DatabaseHelper myDb;
 
     // declare the variables needed to manipulate the widgets
-    EditText editName, editNotes, editDate, editTextId, editTime, editLocation;
+    EditText editNotes, editDate, editTextId, editTime, editLocation;
     Button buttonAddData;
     Button buttonViewAll;
     Button updateButton;
     Button deleteButton;
+
+    Spinner editName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +34,8 @@ public class PokemonSighting extends AppCompatActivity {
         myDb = new DatabaseHelper(this);
 
         // this section gets all the GUI widget ID's for use in the Listeners
-        editName = (EditText)findViewById(R.id.editTextName);
+        //editName = (EditText)findViewById(R.id.editTextName);
+        editName = (Spinner)findViewById(R.id.spinnerName);
         editDate = (EditText)findViewById(R.id.editTextDate);
         editTime = (EditText)findViewById(R.id.editTextTime);
         editLocation = (EditText)findViewById(R.id.editTextLocation);
@@ -40,6 +45,11 @@ public class PokemonSighting extends AppCompatActivity {
         buttonViewAll = (Button)findViewById(R.id.buttonAll);
         updateButton = (Button)findViewById(R.id.buttonUpdate);
         deleteButton = (Button)findViewById(R.id.buttonDelete);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.pokemon,android.R.layout.simple_spinner_item);
+        editName.setAdapter(adapter);
+
+
 
         // in the onCreate of the Main Activity, call all of the methods needed to manage the DB
         AddData();
@@ -54,7 +64,7 @@ public class PokemonSighting extends AppCompatActivity {
         buttonAddData.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(editName.getText().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
+                        boolean isInserted = myDb.insertData(editName.getSelectedItem().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
                         if (isInserted == true)
                             Toast.makeText(PokemonSighting.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
@@ -111,7 +121,7 @@ public class PokemonSighting extends AppCompatActivity {
         updateButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                        boolean isUpdated = myDb.updateData(editTextId.getText().toString(), editName.getText().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
+                        boolean isUpdated = myDb.updateData(editTextId.getText().toString(), editName.getSelectedItem().toString(), editDate.getText().toString(), editTime.getText().toString(), editLocation.getText().toString(), editNotes.getText().toString());
                         if (isUpdated == true)
                             Toast.makeText(PokemonSighting.this, "Data Updated", Toast.LENGTH_LONG).show();
                         else

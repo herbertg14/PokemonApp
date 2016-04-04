@@ -67,7 +67,7 @@
         android:ems="10"
         android:id="@+id/editTextDate"
         android:layout_alignTop="@+id/textViewDate"
-        android:layout_alignStart="@+id/editTextName" />
+        android:layout_alignStart="@+id/spinnerName" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -134,15 +134,6 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editTextName"
-        android:layout_alignTop="@+id/textViewName"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
         android:id="@+id/editTextID"
@@ -158,4 +149,13 @@
         android:layout_below="@+id/textViewNotes"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerName"
+        android:layout_alignEnd="@+id/editTextID"
+        android:layout_alignStart="@+id/editTextID"
+        android:spinnerMode="dropdown"
+        android:layout_above="@+id/textViewDate" />
 </RelativeLayout>
