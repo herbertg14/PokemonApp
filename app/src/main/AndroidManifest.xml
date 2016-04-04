@@ -25,7 +25,8 @@
         <activity android:name=".CharmanderActivity" />
         <activity android:name=".SquirtleActivity" />
         <activity android:name=".PikachuActivity" />
-        <activity android:name=".Bulba"></activity>
+        <activity android:name=".Bulba" />
+        <activity android:name=".PokemonSighting"></activity>
     </application>
 
 </manifest>

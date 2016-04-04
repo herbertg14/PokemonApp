@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             if (editTextUTEID.getText().toString().equals("hog74") &&
                     editTextPassword.getText().toString().equals("password"))
             {
-                Intent i = new Intent(MainActivity.this, PokemonOptions.class);
+                Intent i = new Intent(MainActivity.this, PokemonSighting.class);
                 startActivity(i);
             }
             else
